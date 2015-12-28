@@ -17,3 +17,4 @@ FOUNDATION_EXPORT const unsigned char CNKFVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <CNKF/PublicHeader.h>
 
 
+#import <CNKF/nkf_bridge.h>
