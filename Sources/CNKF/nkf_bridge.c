@@ -43,9 +43,9 @@ cf_nkf_putchar(unsigned int c)
 
 #define PERL_XS 1
 
-#include "nkf-src/config.h"
-#include "nkf-src/utf8tbl.c"
-#include "nkf-src/nkf.c"
+#include "nkf/config.h"
+#include "nkf/utf8tbl.c"
+#include "nkf/nkf.c"
 
  CF_RETURNS_RETAINED __nonnull CFDataRef cf_nkf_convert(__nonnull CFDataRef src, __nonnull CFStringRef opts,  CFIndex* _Nonnull  outLength)
 {

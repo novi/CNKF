@@ -1,0 +1,4 @@
+module CNKF [system] {
+    header "../../Sources/CNKF/include/nkf_bridge.h"
+    export *
+}

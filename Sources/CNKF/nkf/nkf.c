@@ -4590,7 +4590,7 @@ print_guessed_code(char *filename)
 	} else {
 	    printf("%s%s%s%s\n",
 		   input_codename,
-		   iconv != w_iconv16 && iconv != w_iconv32 ? "" :
+		   //iconv != w_iconv16 && iconv != w_iconv32 ? "" :
 		   input_endian == ENDIAN_LITTLE ? " LE" :
 		   input_endian == ENDIAN_BIG ? " BE" :
 		   "[BUG]",

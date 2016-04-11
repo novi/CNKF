@@ -10,8 +10,8 @@
 		529962E11C2FDE4C007D30D6 /* CNKF.h in Headers */ = {isa = PBXBuildFile; fileRef = 529962E01C2FDE4C007D30D6 /* CNKF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		529962E81C2FDE4C007D30D6 /* CNKF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529962DD1C2FDE4C007D30D6 /* CNKF.framework */; };
 		529962ED1C2FDE4C007D30D6 /* CNKFTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 529962EC1C2FDE4C007D30D6 /* CNKFTests.m */; };
-		529962FF1C2FDE60007D30D6 /* nkf_bridge.c in Sources */ = {isa = PBXBuildFile; fileRef = 529962F71C2FDE57007D30D6 /* nkf_bridge.c */; };
-		529963001C2FE84F007D30D6 /* nkf_bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 529962F81C2FDE57007D30D6 /* nkf_bridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52A802521CBBA1C40056E307 /* nkf_bridge.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A802511CBBA1C40056E307 /* nkf_bridge.c */; };
+		52A802541CBBA1CD0056E307 /* nkf_bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A802531CBBA1CD0056E307 /* nkf_bridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +31,8 @@
 		529962E71C2FDE4C007D30D6 /* CNKFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CNKFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		529962EC1C2FDE4C007D30D6 /* CNKFTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNKFTests.m; sourceTree = "<group>"; };
 		529962EE1C2FDE4C007D30D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		529962F71C2FDE57007D30D6 /* nkf_bridge.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = nkf_bridge.c; path = ../../../nkf_bridge.c; sourceTree = "<group>"; };
-		529962F81C2FDE57007D30D6 /* nkf_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nkf_bridge.h; path = ../../../nkf_bridge.h; sourceTree = "<group>"; };
-		529962FA1C2FDE57007D30D6 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		529962FB1C2FDE57007D30D6 /* nkf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = nkf.c; sourceTree = "<group>"; };
-		529962FC1C2FDE57007D30D6 /* nkf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nkf.h; sourceTree = "<group>"; };
-		529962FD1C2FDE57007D30D6 /* utf8tbl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = utf8tbl.c; sourceTree = "<group>"; };
-		529962FE1C2FDE57007D30D6 /* utf8tbl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utf8tbl.h; sourceTree = "<group>"; };
+		52A802511CBBA1C40056E307 /* nkf_bridge.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = nkf_bridge.c; path = ../../../Sources/CNKF/nkf_bridge.c; sourceTree = "<group>"; };
+		52A802531CBBA1CD0056E307 /* nkf_bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nkf_bridge.h; path = ../../../Sources/CNKF/include/nkf_bridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +75,8 @@
 		529962DF1C2FDE4C007D30D6 /* CNKF */ = {
 			isa = PBXGroup;
 			children = (
-				529962F71C2FDE57007D30D6 /* nkf_bridge.c */,
-				529962F81C2FDE57007D30D6 /* nkf_bridge.h */,
-				529962F91C2FDE57007D30D6 /* nkf-src */,
+				52A802511CBBA1C40056E307 /* nkf_bridge.c */,
+				52A802531CBBA1CD0056E307 /* nkf_bridge.h */,
 				529962E01C2FDE4C007D30D6 /* CNKF.h */,
 				529962E21C2FDE4C007D30D6 /* Info.plist */,
 			);
@@ -98,19 +92,6 @@
 			path = CNKFTests;
 			sourceTree = "<group>";
 		};
-		529962F91C2FDE57007D30D6 /* nkf-src */ = {
-			isa = PBXGroup;
-			children = (
-				529962FA1C2FDE57007D30D6 /* config.h */,
-				529962FB1C2FDE57007D30D6 /* nkf.c */,
-				529962FC1C2FDE57007D30D6 /* nkf.h */,
-				529962FD1C2FDE57007D30D6 /* utf8tbl.c */,
-				529962FE1C2FDE57007D30D6 /* utf8tbl.h */,
-			);
-			name = "nkf-src";
-			path = "../../../nkf-src";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -119,7 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				529962E11C2FDE4C007D30D6 /* CNKF.h in Headers */,
-				529963001C2FE84F007D30D6 /* nkf_bridge.h in Headers */,
+				52A802541CBBA1CD0056E307 /* nkf_bridge.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				529962FF1C2FDE60007D30D6 /* nkf_bridge.c in Sources */,
+				52A802521CBBA1C40056E307 /* nkf_bridge.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
