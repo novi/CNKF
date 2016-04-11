@@ -9,6 +9,19 @@
 #import <XCTest/XCTest.h>
 #import "nkf_bridge.h"
 
+CF_RETURNS_RETAINED __nullable CFStringRef cf_nkf_convert_to_utf8(__nonnull CFDataRef src,  __nonnull CFDataRef optsString)
+{
+    CFIndex outLength = 0;
+    CFDataRef data = cf_nkf_convert(src, optsString, &outLength);
+    CFStringRef str = CFStringCreateWithBytes(NULL, CFDataGetBytePtr(data), outLength, kCFStringEncodingUTF8, true);
+    CFRelease(data);
+    return str;
+}
+
+CF_RETURNS_RETAINED CFDataRef StringToData(NSString* str) {
+    return CFStringCreateExternalRepresentation(NULL, (__bridge CFStringRef)str, kCFStringEncodingUTF8, 0);
+}
+
 @interface CNKFTests : XCTestCase
 
 @end
@@ -29,7 +42,7 @@
     NSData* inputData = ([input dataUsingEncoding:NSUTF8StringEncoding]);
     
     CFIndex outLength = 0;
-    CFDataRef outData = cf_nkf_convert((__bridge CFDataRef)(inputData), (__bridge CFStringRef)@"-w", &outLength);
+    CFDataRef outData = cf_nkf_convert((__bridge CFDataRef)(inputData), StringToData(@"-w"), &outLength);
     
     NSLog(@"\n%@->\n%@, %lu, %lu", inputData, outData, CFDataGetLength(outData), outLength);
     
@@ -49,7 +62,7 @@
     
     NSData* inputData = ([input dataUsingEncoding:NSUTF8StringEncoding]);
     
-    CFStringRef outString = cf_nkf_convert_to_utf8((__bridge CFDataRef)(inputData), (__bridge CFStringRef)@"-w");
+    CFStringRef outString = cf_nkf_convert_to_utf8((__bridge CFDataRef)(inputData), StringToData(@"-w"));
     
     NSLog(@"%@->%@", input, outString);
     
@@ -59,11 +72,13 @@
 - (void)testGuessUTF8Input {
     NSString* input = @"あいうえお漢字123🍣\\¥¥¥";
     NSData* inputData = ([input dataUsingEncoding:NSUTF8StringEncoding]);
-    CFStringRef code = cf_nkf_guess((__bridge CFDataRef _Nonnull)(inputData));
+    const char* code = cf_nkf_guess((__bridge CFDataRef _Nonnull)(inputData));
     
-    NSLog(@"%@", code);
+    NSLog(@"%s", code);
     
-    XCTAssertTrue([(__bridge NSString* _Nullable)(code) isEqualToString:@"UTF-8"]);
+    CFStringRef codeStr = CFStringCreateWithCString(NULL, code, kCFStringEncodingUTF8);
+    
+    XCTAssertTrue([(__bridge NSString* _Nullable)(codeStr) isEqualToString:@"UTF-8"]);
     
 }
 

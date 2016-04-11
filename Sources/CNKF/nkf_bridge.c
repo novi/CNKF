@@ -47,14 +47,13 @@ cf_nkf_putchar(unsigned int c)
 #include "nkf/utf8tbl.c"
 #include "nkf/nkf.c"
 
- CF_RETURNS_RETAINED __nonnull CFDataRef cf_nkf_convert(__nonnull CFDataRef src, __nonnull CFStringRef opts,  CFIndex* _Nonnull  outLength)
+ CF_RETURNS_RETAINED __nonnull CFDataRef cf_nkf_convert(__nonnull CFDataRef src, __nonnull CFDataRef optsString,  CFIndex* _Nonnull  outLength)
 {
     
     reinit();
     incsize = INCSIZE;
     
-    CFDataRef optsData = CFStringCreateExternalRepresentation(NULL, opts, kCFStringEncodingUTF8, 0);
-    CFMutableDataRef optsDataM = CFDataCreateMutableCopy(NULL, CFDataGetLength(optsData), optsData);
+    CFMutableDataRef optsDataM = CFDataCreateMutableCopy(NULL, CFDataGetLength(optsString), optsString);
     options(CFDataGetMutableBytePtr(optsDataM));
     
     input_ctr = 0;
@@ -69,7 +68,6 @@ cf_nkf_putchar(unsigned int c)
     
     kanji_convert(NULL);
     
-    CFRelease(optsData);
     CFRelease(optsDataM);
     
     *outLength = output_ctr;
@@ -77,16 +75,7 @@ cf_nkf_putchar(unsigned int c)
     return outputData;
 }
 
-CF_RETURNS_RETAINED __nullable CFStringRef cf_nkf_convert_to_utf8(__nonnull CFDataRef src,  __nonnull CFStringRef opts)
-{
-    CFIndex outLength = 0;
-    CFDataRef data = cf_nkf_convert(src, opts, &outLength);
-    CFStringRef str = CFStringCreateWithBytes(NULL, CFDataGetBytePtr(data), outLength, kCFStringEncodingUTF8, true);
-    CFRelease(data);
-    return str;
-}
-
-CF_RETURNS_RETAINED __nullable CFStringRef cf_nkf_guess(__nonnull CFDataRef src)
+CF_RETURNS_RETAINED const char* cf_nkf_guess(__nonnull CFDataRef src)
 {
     reinit();
     incsize = INCSIZE;
@@ -99,8 +88,7 @@ CF_RETURNS_RETAINED __nullable CFStringRef cf_nkf_guess(__nonnull CFDataRef src)
     
     kanji_convert(NULL);
     
-    const char* code = get_guessed_code();
-    return CFStringCreateWithCString(NULL, code, kCFStringEncodingUTF8);
+    return get_guessed_code();
 }
 
 
